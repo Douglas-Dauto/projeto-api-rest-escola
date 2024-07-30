@@ -20,6 +20,12 @@ export default class Foto extends Model {
                         msg: 'Campo não pode ficar vazio.'
                     }
                 }
+            },
+            url: {
+                type: Sequelize.VIRTUAL,
+                get() {
+                    return `http://localhost:3001/images/${this.getDataValue('filename')}`;
+                }
             }
         }, {
             sequelize,
